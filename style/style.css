@@ -6,7 +6,11 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url(body-background-img.jpg);
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eaf6f6 0%, #a8cdd7 45%, #1c6fb8 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .error-container,
 .icon-container,
@@ -22,13 +26,12 @@ body {
   gap: 3rem;
 }
 .loading-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 12rem;
-}
-.loading-container h2 {
-  font-size: 1.7rem;
-  font-family: "Rowdies";
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-family: "Nunito Sans";
   font-weight: lighter;
-  color: hsl(60, 13%, 89%);
+  background-color: rgb(0 0 0 / 12%);
+  border: hsl(0, 0%, 0%) 1px solid;
+  border-radius: 10px;
+  padding: 10rem 1.5rem;
 }
