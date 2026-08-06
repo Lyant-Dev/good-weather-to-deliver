@@ -24,12 +24,11 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    // CHALLENGE STEP A: Construct your dynamic URL string using template literals (backticks ``)
     // Inject your lat, lng, and apiKey variables into the string.
-    const url = `https://openweathermap.org${lat}&lon=${lng}&units=metric&appid=${API_key}
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}
 `;
 
-    // CHALLENGE STEP B: Use 'await fetch()' to hit that URL
+    //  Use 'await fetch()' to hit that URL
     const response = await fetch(url);
 
     // CHALLENGE STEP C: Turn the raw stream response into a readable JavaScript Object
