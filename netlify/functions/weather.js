@@ -30,12 +30,20 @@ exports.handler = async function (event, context) {
 
     //  Use 'await fetch()' to hit that URL
     const response = await fetch(url);
+    if (!response.ok) {
+      return {
+        statusCode: response.status,
+        body: JSON.stringify({
+          error: `Openweather error: ${response.statusText}`,
+        }),
+      };
+    }
 
-    // CHALLENGE STEP C: Turn the raw stream response into a readable JavaScript Object
-    // Hint: Response bodies are streams. We use 'await response.json()' to parse it.
+    // Turn the raw stream response into a readable JavaScript Object
+
     const weatherData = await response.json();
 
-    // CHALLENGE STEP D: Return a successful 200 response containing the weatherData object
+    // Return a successful 200 response containing the weatherData object
     return {
       statusCode: 200,
       body: JSON.stringify({
