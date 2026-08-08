@@ -2,7 +2,7 @@
 
 exports.handler = async function (event, context) {
   // Grab API key from the environment variables
-  const apiKey = process.env.WEATHER_API_KEY;
+  const apiKey = process.env.OPENWEATHER_KEY;
 
   // fail early if server/hosting environment is missing the key
   if (!apiKey) {
@@ -25,8 +25,7 @@ exports.handler = async function (event, context) {
 
   try {
     // Inject your lat, lng, and apiKey variables into the string.
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}
-`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`;
 
     //  Use 'await fetch()' to hit that URL
     const response = await fetch(url);
