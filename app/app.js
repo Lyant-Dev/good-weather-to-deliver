@@ -5,7 +5,16 @@ if ("geolocation" in navigator) {
     (position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+      fetch(`./netlify/functions/weather?lat=${lat}&lon=${lng}`)
+        .then((response) => {
+          response.json();
+        })
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     (error) => {
       console.error(`Error (${error.code}): ${error.message}`);
