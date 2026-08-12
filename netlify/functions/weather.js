@@ -15,17 +15,17 @@ exports.handler = async function (event, context) {
   }
 
   // Get lat and lng from query string (?lat=...&lng=...)
-  const { lat, lng } = event.queryStringParameters || {};
-  if (lat == null || lng == null || lat.trim() === "" || lng.trim() === "") {
+  const { lat, lon } = event.queryStringParameters || {};
+  if (lat == null || lon == null || lat.trim() === "" || lon.trim() === "") {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: "Missing lat or lng query parameters" }),
+      body: JSON.stringify({ error: "Missing lat or lon query parameters" }),
     };
   }
 
   try {
     // Inject your lat, lng, and apiKey variables into the string.
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
     //  Use 'await fetch()' to hit that URL
     const response = await fetch(url);
