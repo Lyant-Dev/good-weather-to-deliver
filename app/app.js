@@ -36,6 +36,10 @@ if ("geolocation" in navigator) {
         document.querySelector("#weather-desc").textContent = `${weatherDesc}`;
         document.querySelector("#temp").textContent = `${temp}`;
         document.querySelector("#temp-feels").textContent = `${tempFeels}`;
+
+        document.querySelector(".loading-container").style.display = "none";
+        document.querySelector(".data-container").style.display = "flex";
+        document.querySelector(".icon-container").style.display = "flex";
       });
     },
     (error) => {
