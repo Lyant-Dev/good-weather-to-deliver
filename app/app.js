@@ -1,4 +1,22 @@
-// check if the browser supports Geolocation
+// update info & status logic
+function updateDeliveryStatus(weather, temp, windSpeed) {
+  const statusInfo = document.querySelector("#status-info");
+  const statusDelivery = document.querySelector("#status-delivery");
+  if (weather === "Rain" || weather === "Thunderstorm" || windSpeed >= 11.11) {
+    statusInfo.textContent = "🚫 Berbahaya";
+    statusDelivery.textContent =
+      "Resiko tinggi, tunda pengiriman sampai cuaca membaik!";
+  } else if (weather === "Drizzle" || temp >= 35) {
+    statusInfo.textContent = "⚠️ Berisiko";
+    statusDelivery.textContent =
+      "Gunakan perlengkapan ekstra / hati-hati di jalan!";
+  } else {
+    statusInfo.textContent = "✅ Aman";
+    statusDelivery.textContent = "Cuaca mendukung, semoga pengiriman lancar!";
+  }
+}
+
+//Alur Geolocation & Fetch
 
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(
@@ -24,22 +42,23 @@ if ("geolocation" in navigator) {
         const weatherDesc = result.data.weather[0].description;
         const temp = result.data.main.temp;
         const tempFeels = result.data.main.feels_like;
+        const windSpeed = result.data.wind.speed;
 
-        console.log(location);
-        console.log(weather);
-        console.log(weatherDesc);
-        console.log(temp);
-        console.log(tempFeels);
-
+      // Render ke DOM
         document.querySelector("#location").textContent = `${location}`;
         document.querySelector("#weather-condition").textContent = `${weather}`;
         document.querySelector("#weather-desc").textContent = `${weatherDesc}`;
         document.querySelector("#temp").textContent = `${temp}`;
-        document.querySelector("#temp-feels").textContent = `${tempFeels}`;
+        document.querySelector("#temp-feels").textContent =
+          `Feels like: ${tempFeels}`;
+        document.querySelector("#wind-speed").textContent = `${windSpeed}`;
 
         document.querySelector(".loading-container").style.display = "none";
         document.querySelector(".data-container").style.display = "flex";
         document.querySelector(".icon-container").style.display = "flex";
+        document.querySelector(".status-container").style.display = "flex";
+
+        updateDeliveryStatus(weather, temp, windSpeed);
       });
     },
     (error) => {
@@ -49,3 +68,4 @@ if ("geolocation" in navigator) {
 } else {
   console.log("Geolocation is not supported by this browser.");
 }
+
