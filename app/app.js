@@ -75,7 +75,7 @@ if ("geolocation" in navigator) {
     (error) => {
       document.querySelector(".loading-container").style.display = "none"
       document.querySelector(".error-container").style.display = "flex";
-      console.log(`${error.code} ${error.message}`);
+      console.error(`${error.code} ${error.message}`);
     },
   );
 } else {
