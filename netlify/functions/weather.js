@@ -14,7 +14,7 @@ exports.handler = async function (event, context) {
     };
   }
 
-  // Get lat and lng from query string (?lat=...&lng=...)
+
   const { lat, lon } = event.queryStringParameters || {};
   if (lat == null || lon == null || lat.trim() === "" || lon.trim() === "") {
     return {
@@ -24,7 +24,7 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    // Inject your lat, lng, and apiKey variables into the string.
+    
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
     //  Use 'await fetch()' to hit that URL

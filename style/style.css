@@ -12,17 +12,24 @@ body {
   justify-content: center;
   align-items: center;
 }
-.error-container,
-.icon-container,
-.status-container {
-  display: none;
-}
+
 .card-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-family: "Nunito Sans";
+  font-weight: lighter;
+  background-color: rgb(0 0 0 / 12%);
+  border: hsl(0, 0%, 52%) 1px solid;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
   justify-content: center;
-  gap: 3rem;
+  align-items: center;
+  gap: 1rem;
 }
 .loading-container {
   color: rgb(255, 255, 255);
@@ -96,5 +103,100 @@ body {
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+.error-container {
+   color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-family: "Nunito Sans";
+  font-weight: lighter;
+  background-color: rgb(0 0 0 / 12%);
+  border: hsl(0, 0%, 52%) 1px solid;
+  border-radius: 10px;
+  padding: 10rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.date-time {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
+.weather-data,
+.weather-status {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 1rem;
+}
+.location {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.weather-condition {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.weather-desc {
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.75;
+  text-transform: capitalize; /* biar "broken clouds" jadi "Broken Clouds" */
+}
+.temp {
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+.weather-icon {
+  font-size: 4.5rem;
+}
+.temp-feels,
+.wind-speed {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.status-container {
+  width: 90%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 0.5rem 1.2rem;
+  margin: 1rem;
+  border: hsl(0, 0%, 100%) 1.5px solid;
+  border-radius: 50px;
+}
+.status-safe {
+  background-color: rgb(0 0 0 / 12%);
+  border-color: rgb(34, 197, 94);
+}
+.status-warning {
+  background-color: rgb(0 0 0 / 12%);
+  border-color: rgb(234, 179, 8);
+}
+.status-danger {
+  background-color: rgb(0 0 0 / 12%);
+  border-color: rgb(239, 68, 68);
+}
+.error-container,
+.icon-container,
+.data-container,
+.status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-container,
+.icon-container,
+.data-container,
+.status-container {
+  display: none;
+}
+@media screen and (min-width: 576px) {
+  .status-container {
+    max-width: 542px;
   }
 }
